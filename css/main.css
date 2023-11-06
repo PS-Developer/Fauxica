@@ -1,0 +1,72 @@
+html {
+    font-size: 62.5%;  
+}
+/* 62.5% helps with conversion when using Figma. 41px (Figma) = 4.1em 
+Use rem for font sizes, use em for scaling (margin, padding, border radius etc)*/
+
+body {
+    margin: 0;
+    font-family: 'Poppins';
+}
+
+.wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+/* Navbar */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav {
+    margin: 4em;
+}
+
+nav ul {
+   list-style-type: none; 
+   display: flex;
+   gap: 4.1em;
+   margin: 0;
+}
+/* Margin: 0 is to reset the margin that is auto added by browsers. 
+You can check this on using Google Dev Tools */
+
+nav ul li a {
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    position: relative;
+}
+
+nav ul li a.active::before {
+    position: absolute;
+    content: "";
+    width: 35%;
+    height: 1px;
+    border-bottom: 2px solid black;
+    bottom: -6px;
+}
+/* Parent el (element) = relative, the el we're moving around = absolute 
+This is so the el can move, but only within the parent el/container */
+
+/* Hero Section */
+
+main {
+    display: flex;
+    gap: 8em;
+    margin-top: 11em;
+}
+
+.left-col {
+    width: 45%;
+}
+
+.right-col {
+    flex-grow: 1;
+}
+/* flex-grow 1 is so the elements take up the rest of the space on the right.
+Without it, the els are all bunched up */
