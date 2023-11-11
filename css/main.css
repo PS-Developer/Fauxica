@@ -53,6 +53,16 @@ nav ul li a.active::before {
 /* Parent el (element) = relative, the el we're moving around = absolute 
 This is so the el can move, but only within the parent el/container */
 
+nav ul li a::before {
+    position: absolute;
+    content: "";
+    width: 0%;
+    height: 1px;
+    border-bottom: 2px solid rgb(122, 122, 122);
+    bottom: -6px;
+    transition: width .3s;
+}
+
 /* Hero Section */
 
 main {
@@ -70,3 +80,217 @@ main {
 }
 /* flex-grow 1 is so the elements take up the rest of the space on the right.
 Without it, the els are all bunched up */
+
+h1 {
+    font-size: 5.2rem;
+    font-family: 'Playfair Display';
+    font-weight: normal;
+    margin: 0;
+}
+
+.subhead {
+    font-size: 1.8rem;
+}
+
+.cta-btns {
+    margin: 5em 0;
+}
+
+.cta-btns, .secondary-cta {
+    display: flex;
+    gap: 2em;
+}
+
+.primary-cta {
+    background-color: #f1e2d1;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+    border-radius: 1.9em;
+    padding: 1em 2em;
+}
+
+.secondary-cta {
+    font-size: 1.8rem;
+    text-decoration: none;
+    color: black;
+    display: block; 
+    padding: 1em 0;
+}
+/* Display block is so the words aren't under each other. They don't 'wrap' */
+
+.secondary-cta svg {
+    width: 20px;
+    transition: transform .3s;
+}
+
+.news {
+    display: flex;
+    gap: 3em;
+    padding: 5em;
+    border: 1px solid black;
+    border-radius: 1.9em;
+    position: relative;
+}
+
+.news::before {
+    position: absolute;
+    content: "";
+    background: url(../images/confetti.svg);
+    width: 100px;
+    height: 100px;
+    top: -20px;
+    left: -20px;
+    z-index: 2;
+}
+/* Z index places the el before or after the parent el. */
+
+p.employees{
+    font-size: 3.3rem;
+    margin: 0;
+    font-weight: 200;
+    line-height: 100%;
+}
+/* Line height makes the 50k in line even with the text beside it. */
+
+p.details {
+    font-size: 1.4rem;
+    margin: 0;
+}
+
+/* Right column gallery */
+
+.right-col {
+    display: grid;
+    gap: 2.9em;
+    grid-template-columns: repeat(2, auto);
+    grid-template-areas:
+        "left right"
+        "left bottom";
+}
+
+.card {
+    border-radius: .8em;
+    padding: 1.1em;
+    background-size: 150%;
+    display: flex;
+    align-items: end;
+    transition: background-size .3s;
+}
+
+.card1 {
+    grid-area: left;
+    background-image: url(../images/clothing1.jpg);
+    position: relative; 
+    
+}
+
+.card1::before {
+    position: absolute;
+    content: "";
+    background: url(../images/tag.svg) no-repeat;
+    width: 100%;
+    height: 100%;
+    top: 20px;
+    left: -30px;
+    pointer-events: none;
+}
+/* The tag is over the card, so the card text can't be clicked. 
+Pointer event none makes it so you can still click the card text. */
+
+.card2 {
+    background-image: url(../images/clothing2.jpg);
+    position: relative; 
+}
+
+.card3 {
+    background-image: url(../images/clothing3.jpg);
+    position: relative; 
+}
+
+.card-details {
+    background: white;
+    border-radius: 1em;
+    padding: 2em;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: transform .3s;
+}
+
+.card-details a {
+    color: black;
+    text-decoration: none;
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.card-details p {
+    font-size: 1.4rem;
+    margin: 0;
+}
+
+p.product-price {
+    font-size: 1.8rem;
+}
+
+/* Microinteractions */ 
+
+nav ul li a:hover:before {
+    width: 35%;
+}
+
+.primary-cta:hover {
+    background: #e3e0c7;
+}
+
+.secondary-cta:hover svg {
+    transform: translateX(10px);
+}
+
+.card:hover {
+    background-size: 160%;
+}
+
+.card:hover .card-details {
+    transform: translateY(-20px);
+}
+/* This means when hovering over el, move to the right 10px
+on the original s-cta ruleset, .3s is how long it takes to move*/
+
+/* Intro Animation */
+
+.overlay {
+    position: absolute;
+    z-index: 999;
+    background: white;
+    width: 100%;
+    height: 100%;
+    animation: reveal 1s ease-in forwards;
+    transform-origin: bottom;
+}
+/* Reveal is the name, it can be anything. the rest are all anim properties.
+Bottom is so the anim reveals from top to bottom */
+
+@keyframes reveal {
+    from {
+        transform: scaleY(1);
+    }
+    to {
+        transform: scaleY(0);
+    }
+}
+/* Keyframes is how it animates */
+
+main {
+    animation: growIn 2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+    transform: scale(.4);
+}
+
+@keyframes growIn {
+    to {
+        transform: scale(1);
+    }
+}
